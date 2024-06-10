@@ -1,5 +1,11 @@
 from django.db import models
 
+
+class Poster(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='sliders/')
+    def __str__(self):
+        return self.name
 class Books(models.Model):
 
     GENRE_CHOICES = (
@@ -26,3 +32,28 @@ class Books(models.Model):
     class Meta:
         verbose_name = 'Книгу'
         verbose_name_plural = 'Книги'
+
+
+class ReviewBooks(models.Model):
+    book = models.ForeignKey(Books, on_delete=models.CASCADE,
+                             related_name='review_books')
+    text = models.TextField()
+    mark = models.IntegerField(default=5)
+
+    def __str__(self):
+        return f'{self.book} - {self.mark}'
+
+
+class Tags(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    title= models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.PositiveIntegerField(default=100)
+    tags = models.ManyToManyField(Tags)
+
+    def __str__(self):
+        return f'{self.title} - {self,print}'

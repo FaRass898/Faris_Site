@@ -1,8 +1,21 @@
+{% include "../header.html" %}
+
+
 <h1>{{ book_id.name }}</h1>
 <p>Автор - {{ book_id.author_name}}</p>
 <img src="{{ i.image.url }}" width="250" height="350">
 <data>Вышла в {{ book_id.data_release}}</data>
 <p>{{ book_id.short_description}}</p>
-<a href="{{ book_id.summary }}" download>Скачать книгу</a>
+<a href="{{ book_id.summary.url }}" download>Скачать книгу</a>
 <a href="{{ book_id.wiki }}">Перейти на вики</a>
 <data>Пост добавлен - {{ book_id.created_at}}</data>
+
+    <ui>
+        {% for i in book_id.review_employees.all %}
+        <li>
+            <h1>{{ i.text }}</h1>
+            <p>{{ i.mark }}</p>
+        </li>
+    </ui>
+
+{% include "../footer.html" %}
