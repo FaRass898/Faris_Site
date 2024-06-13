@@ -2,8 +2,11 @@
 
 <center>
   <h1>Каталог книг</h1>
-
-      {% for i in books %}
+  <button type="button" class="btn btn-primary">
+    <a href="/books/books_catalog/create_book/" class="add_bks">Добавить книгу</a>
+  </button>
+  <br><br>
+  {% for i in books %}
   <br>
   <div class="card" style="width: 18rem;">
     <img src="{{ i.image.url }}" class="card-img-top" alt="...">
@@ -11,6 +14,11 @@
       <h5 class="card-title">{{ i.name }}</h5>
       <p class="card-text">{{ i.author_name }}</p>
       <a href="/books/books_catalog/{{ i.id }}/" class="btn btn-primary">Описание</a>
+      <a href="/books/books_catalog/{{ i.id }}/delete/" class="btn btn-primary">Удалить</a>
+      <br><br>
+      <a href="/books/books_catalog/{{ i.id }}/update/" class="btn btn-primary">Редактировать</a>
+
+
     </div>
   </div>
   <br>
