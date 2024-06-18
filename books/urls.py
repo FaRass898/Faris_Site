@@ -3,15 +3,12 @@ from . import views
 
 
 urlpatterns = [
-    path('books_catalog', views.books_list_view),
-    path('books_catalog/<int:id>/', views.books_detail_view),
-    path('books_catalog/<int:id>/delete', views.drop_books_view),
-    path('books_catalog/<int:id>/update', views.edit_books_view),
+    path('books_catalog', views.BooksListView.as_view()),
+    path('books_catalog/<int:id>/', views.BooksDetailView.as_view()),
+    path('books_catalog/<int:id>/delete/', views.BooksDetailView.as_view()),
+    path('books_catalog/<int:id>/update/', views.EditBookView.as_view()),
+    path('books_catalog/search/', views.SearchListView.as_view(), name='search'),
+    path('books_catalog/create_book/', views.CreateBookView.as_view()),
 
-    path('create_book/', views.create_books_view),
 
-    path('personal_info/', views.personal_info_view, name='personal_info'),
-    path('hobby/', views.hobby_view, name='hobby'),
-    path('current_time/', views.current_time_view, name='current_time'),
-    path('random_numbers/', views.random_numbers_view, name='random_numbers'),
 ]

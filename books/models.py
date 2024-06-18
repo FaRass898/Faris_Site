@@ -1,11 +1,7 @@
 from django.db import models
 
 
-class Poster(models.Model):
-    name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='sliders/')
-    def __str__(self):
-        return self.name
+
 class Books(models.Model):
 
     GENRE_CHOICES = (
@@ -57,3 +53,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.title} - {self,print}'
+
+class Poster(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='sliders/')
+    def __str__(self):
+        return self.name
